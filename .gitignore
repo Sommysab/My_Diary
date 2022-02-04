@@ -1,0 +1,12 @@
+# ENV file
+.env
+
+# Custom Files
+main.txt
+api/server.txt
+
+# SQLITE DB
+sqlite
+
+# Executables
+*.exe
