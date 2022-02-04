@@ -5,6 +5,7 @@ services:
     restart: on-failure
     network_mode: 'host'
     container_name: go-project-backend
+    #
     # volumes:
     #   - .:/app
     env_file:
