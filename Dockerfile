@@ -22,7 +22,8 @@
 # CMD [ "./main" ]
 
 
-FROM golang:1.12.7-alpine3.10 AS build
+# FROM golang:1.12.7-alpine3.10 AS build
+FROM golang AS build
 # Support CGO and SSL
 RUN apk --no-cache add gcc g++ make
 RUN apk add git
@@ -39,8 +40,8 @@ RUN go get -u golang.org/x/crypto/bcrypt
 RUN go get -u github.com/dgrijalva/jwt-go
 RUN go get -u github.com/badoux/checkmail
 RUN go get -u github.com/dgrijalva/jwt-go/request
-# RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/test ./main.go
-RUN go build -o ./bin/webserver ./main.go
+RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/test ./main.go
+# RUN go build -o ./bin/webserver ./main.go
 
 FROM alpine:3.10
 RUN apk --no-cache add ca-certificates
