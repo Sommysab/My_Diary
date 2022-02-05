@@ -22,8 +22,9 @@
 # CMD [ "./main" ]
 
 
-# FROM golang:1.12.7-alpine3.10 AS build
-FROM golang
+FROM golang:1.12.7-alpine3.10 AS build
+# FROM golang
+RUN export GO111MODULE="on"
 # Support CGO and SSL
 RUN apk --no-cache add gcc g++ make
 RUN apk add git
