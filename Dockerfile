@@ -48,7 +48,7 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /usr/bin
 COPY --from=build /go/src/backend/bin /go/bin
 EXPOSE 8000
-ENTRYPOINT /go/bin/webserver --port 8000
+ENTRYPOINT /go/bin/test --port 8000
 
 # FROM alpine:3.10
 # COPY --from=build /go/src/app/bin /go/bin
