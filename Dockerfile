@@ -23,13 +23,12 @@
 
 
 # FROM golang:1.12.7-alpine3.10 AS build
-FROM golang AS build
+FROM golang:1.17.6-alpine3.15 AS build
 # Support CGO and SSL
 RUN apk --no-cache add gcc g++ make
 RUN apk add git
 ENV GO111MODULE=on
 WORKDIR /go/src/backend
-
 COPY . .
 RUN go get -u github.com/go-sql-driver/mysql
 RUN go get -u github.com/mattn/go-sqlite3
