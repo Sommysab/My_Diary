@@ -24,11 +24,13 @@ func init() {
 type spaHandler struct {
 	staticPath string
 	indexPath  string
+	env        string
 }
 
-func modifyPath(path string) string {
+// Windows OS modification
+func modifyPath(path string, h spaHandler) string {
 	// path
-	if config.ENV == "development" {
+	if h.env == "development" {
 		path = strings.Replace(path, `C:\`, "/", 1)
 	}
 	return path
@@ -39,10 +41,11 @@ func modifyPath(path string) string {
 // file located at the index path on the SPA handler will be served. This
 // is suitable behavior for serving an SPA (single page application).
 func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
 	// get the absolute path to prevent directory traversal
 	path, err := filepath.Abs(r.URL.Path)
 
-	path = modifyPath(path) // strings.Replace(path, `C:\`, "/", 1)
+	path = modifyPath(path, h) // strings.Replace(path, `C:\`, "/", 1)
 
 	if err != nil {
 		// if we failed to get the absolute path respond with a 400 bad request
@@ -76,8 +79,10 @@ func main() {
 	r := router.New()
 
 	// Serving Static Files
-	spa := spaHandler{staticPath: "client/build", indexPath: "index.html"}
+	spa := spaHandler{staticPath: "client/build", indexPath: "index.html", env: config.ENV}
 	r.PathPrefix("/").Handler(spa)
+
+	// f.Printf("env:%s", config.ENV)
 
 	srv := &http.Server{
 		Handler: r,
