@@ -11,6 +11,10 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/mattn/go-sqlite3 v1.14.0
 	golang.org/x/crypto v0.0.0-20220131195533-30dcbda58838
+	gorm.io/gorm v1.22.5
 )
 
-require github.com/jinzhu/inflection v1.0.0 // indirect
+require (
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.4 // indirect
+)

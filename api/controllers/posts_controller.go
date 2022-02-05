@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -11,10 +12,10 @@ import (
 	"backend/api/repository"
 	"backend/api/repository/crud"
 	"backend/api/responses"
-	"backend/api/utils/console"
 	"backend/api/utils/types"
 
 	"github.com/gorilla/mux"
+	"gorm.io/gorm"
 )
 
 // GetPosts from the DB
@@ -31,8 +32,8 @@ func GetPosts(w http.ResponseWriter, r *http.Request) {
 
 	func(postRepository repository.PostRepository, user models.User) {
 		posts, err := postRepository.FindAll(user.ID)
-		console.Pretty(posts[0])
-		if err != nil {
+		// console.Pretty(posts[0])
+		if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 			responses.ERROR(w, http.StatusUnprocessableEntity, err)
 			return
 		}

@@ -60,7 +60,7 @@ func (r *RepositoryPostsCRUD) FindAll(authorid uint64) ([]models.Post, error) {
 	if channels.OK(done) {
 		return posts, nil
 	}
-	return nil, err
+	return posts, err
 }
 
 // FindByID returns a post from the DB

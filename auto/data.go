@@ -5,7 +5,7 @@ import (
 )
 
 var users = []models.User{
-	models.User{Name: "sommysab", Email: "sommysabudeh@gmail.com", Password: "1"},
+	models.User{Name: "sommysab", Email: "sommysab@gmail.com", Password: "1"},
 }
 
 var posts = []models.Post{
