@@ -102,6 +102,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -109,8 +111,9 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", helloHandler)
-	http.ListenAndServe(":8010", nil)
+	r := mux.NewRouter()
+	r.HandleFunc("/", helloHandler)
+	http.ListenAndServe(":8010", r)
 }
 
 //main.go
