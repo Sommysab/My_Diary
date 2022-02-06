@@ -100,9 +100,11 @@
 package main
 
 import (
+	"backend/config"
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -115,7 +117,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", helloHandler).Methods("GET")
-	log.Fatal(http.ListenAndServe(":8010", r))
+	log.Fatal(http.ListenAndServe(":"+strconv.FormatUint(uint64(config.PORT), 10), r))
 }
 
 //main.go
