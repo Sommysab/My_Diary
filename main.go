@@ -74,10 +74,6 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
 }
 
-// var db *gorm.DB
-
-// var err error
-
 func main() {
 	// Router
 	r := router.New()

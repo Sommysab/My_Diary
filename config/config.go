@@ -38,7 +38,6 @@ func Load() {
 	)
 
 	// db, err = gorm.Open( "postgres", "host=db port=5432 user=postgres dbname=postgres sslmode=disable password=postgres")
-
 	// DBURL = "host=postgres port=5432 user=postgres dbname=postgres sslmode=disable password=postgres"
 
 	SECRETKEY = []byte(os.Getenv("API_SECRET"))

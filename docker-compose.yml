@@ -14,27 +14,16 @@
 
 version: '3'
 services:
-  # postgres:
-  #   image: 'postgres:latest'
-  #   environment:
-  #     - POSTGRES_PASSWORD=mypostgres
-
   db:
-    container_name: hardware_store_db
-    image: 'mysql:5.7'
+    image: mysql:5.7.26
+    container_name: godockerDB
     environment:
-      - MYSQL_DATABASE=hardwarestore
-      - MYSQL_ROOT_PASSWORD=@root
-      - MYSQL_USER=mysql
-      - MYSQL_PASSWORD=@root
-      - DATABASE_HOST=db
-      - LC_ALL=C.UTF-8
-      - LANG=C.UTF-8
+      MYSQL_USER: docker
+      MYSQL_ROOT_PASSWORD: passwor1d
+      MYSQL_PASSWORD: passwor1d
+      MYSQL_DATABASE: godocker
     ports:
-      - '3307:3306'
-    volumes:
-      - ./data:/var/lib/mysql
-      - ./sql:/docker-entrypoint-initdb.d ./sql:/docker-entrypoint-initdb.d
+      - '3306:3306'
 
   gowebserver:
     build: '.'
@@ -51,6 +40,7 @@ services:
       - API_PORT=8010
       - API_SECRET=ab1234
       - DB_DRIVER=mysql
+
       - DB_HOST=db
       - DB_PORT=3306
       - DB_NAME=hardwarestore
