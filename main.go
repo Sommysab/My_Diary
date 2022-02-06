@@ -120,6 +120,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
+
+	"backend/config"
 
 	"github.com/gorilla/mux"
 )
@@ -127,7 +130,7 @@ import (
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/", DoHealthCheck).Methods("GET")
-	log.Fatal(http.ListenAndServe(":8010", router))
+	log.Fatal(http.ListenAndServe(":"+strconv.FormatUint(uint64(config.PORT), 10), router))
 }
 func DoHealthCheck(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, i'm a golang microservice")
