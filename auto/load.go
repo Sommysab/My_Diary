@@ -22,7 +22,7 @@ func Load() {
 		log.Fatal(err)
 	}
 
-	err = db.Debug().AutoMigrate(&models.User{}, &models.Post{}).Error
+	err = db.Debug().AutoMigrate(models.User{}, models.Post{}).Error
 	if err != nil {
 		log.Fatal(err)
 	}
