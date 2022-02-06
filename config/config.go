@@ -14,6 +14,7 @@ var (
 	DBDRIVER  = ""
 	DBURL     = ""
 	ENV       = ""
+	DBURL2    = ""
 )
 
 // Load the server PORT
@@ -29,15 +30,17 @@ func Load() {
 		PORT = 9000
 	}
 	DBDRIVER = os.Getenv("DB_DRIVER")
-	DBURL = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_HOST"),
-		os.Getenv("DB_PORT"),
-		os.Getenv("DB_NAME"),
-	)
+	// DBURL = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
+	// 	os.Getenv("DB_USER"),
+	// 	os.Getenv("DB_PASSWORD"),
+	// 	os.Getenv("DB_HOST"),
+	// 	os.Getenv("DB_PORT"),
+	// 	os.Getenv("DB_NAME"),
+	// )
 
-	// DBURL = "./sqlite/db.sqlite"
+	DBURL = fmt.Sprintf("host=localhost user=gorm password=%s dbname=gorm port=9920 sslmode=disable TimeZone=Lagos/Africa",
+		os.Getenv("DB_PASSWORD"),
+	)
 
 	SECRETKEY = []byte(os.Getenv("API_SECRET"))
 

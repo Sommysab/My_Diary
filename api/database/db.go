@@ -3,9 +3,8 @@ package database
 import (
 	"backend/config"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	_ "github.com/mattn/go-sqlite3"
+	_ "gorm.io/driver/postgres"
 )
 
 // Connect to the DATABASE

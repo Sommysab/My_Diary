@@ -24,14 +24,6 @@
 # # ENV GO111MODULE=on
 # # COPY . .
 # # RUN go get -u github.com/go-sql-driver/mysql
-# # RUN go get -u github.com/mattn/go-sqlite3
-# # RUN go get -u github.com/jinzhu/gorm
-# # RUN go get -u github.com/gorilla/mux
-# # RUN go get -u github.com/joho/godotenv
-# # RUN go get -u golang.org/x/crypto/bcrypt
-# # RUN go get -u github.com/dgrijalva/jwt-go
-# # RUN go get -u github.com/badoux/checkmail
-# # RUN go get -u github.com/dgrijalva/jwt-go/request
 # # RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/test ./main.go
 
 # # FROM alpine:3.10
@@ -52,13 +44,6 @@
 # COPY . .
 # RUN go get -u github.com/go-sql-driver/mysql
 # RUN go get -u github.com/mattn/go-sqlite3
-# RUN go get -u github.com/jinzhu/gorm
-# RUN go get -u github.com/gorilla/mux
-# RUN go get -u github.com/joho/godotenv
-# RUN go get -u golang.org/x/crypto/bcrypt
-# RUN go get -u github.com/dgrijalva/jwt-go
-# RUN go get -u github.com/badoux/checkmail
-# RUN go get -u github.com/dgrijalva/jwt-go/request
 # # RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/gowebserver ./main.go
 # RUN go build -o ./bin/webserver ./main.go
 
@@ -71,9 +56,18 @@
 
 FROM golang:1.17.6-alpine3.15 AS build
 RUN apk --no-cache add gcc g++ make git
-# FROM golang:1.12.7-alpine3.10 AS build
 WORKDIR /go/src/app
+ENV DB_PASSWORD=some_ABC_pass_123
+ENV DB_NAME=blog2
 COPY . .
+RUN go get -u gorm.io/driver/postgres
+RUN go get -u github.com/jinzhu/gorm
+RUN go get -u github.com/gorilla/mux
+RUN go get -u github.com/joho/godotenv
+RUN go get -u golang.org/x/crypto/bcrypt
+RUN go get -u github.com/dgrijalva/jwt-go
+RUN go get -u github.com/badoux/checkmail
+RUN go get -u github.com/dgrijalva/jwt-go/request
 RUN go build -o ./bin/webserver ./main.go
 
 FROM alpine:3.10
