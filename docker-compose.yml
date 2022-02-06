@@ -3,12 +3,12 @@ services:
   api:
     build: .
     restart: 'on-failure'
-    # network_mode: 'host'
+    network_mode: 'host'
     container_name: go-project-backend
     env_file:
       - './.env'
-    # ports:
-    #   - '8000'
+    ports:
+      - '8000:8000'
     environment:
       - CHOKIDAR_USEPOLLING=true
       - TZ=Africa/Lagos
@@ -26,17 +26,16 @@ services:
       options:
         max-size: '10m'
         max-file: '3'
-    networks:
-      - example-net
+    # networks:
+    #   - example-net
   nginx:
     build: './nginx'
     ports:
       - '8000:80'
     depends_on:
       - 'api'
-    networks:
-      - example-net
-
-networks:
-  example-net:
-    external: true
+    # networks:
+    #   - example-net
+# networks:
+#   example-net:
+#     external: true
