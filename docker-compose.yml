@@ -27,7 +27,7 @@ services:
         max-size: '10m'
         max-file: '3'
     networks:
-      - example
+      - example-net
   nginx:
     build: './nginx'
     ports:
@@ -35,8 +35,8 @@ services:
     depends_on:
       - 'api'
     networks:
-      - example
+      - example-net
 
 networks:
-  example:
+  example-net:
     external: true
