@@ -82,8 +82,6 @@ func main() {
 	spa := spaHandler{staticPath: "client/build", indexPath: "index.html", env: config.ENV}
 	r.PathPrefix("/").Handler(spa)
 
-	// f.Printf("env:%s", config.ENV)
-
 	srv := &http.Server{
 		Handler: r,
 		Addr:    ":8010", // + strconv.FormatUint(uint64(config.PORT), 10),
