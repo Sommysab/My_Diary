@@ -1,6 +1,6 @@
-version: '3.7'
+version: '3.6'
 services:
-  api:
+  gowebserver:
     build: .
     restart: 'on-failure'
     network_mode: 'host'
@@ -8,7 +8,7 @@ services:
     env_file:
       - './.env'
     ports:
-      - '8000:8000'
+      - '8000'
     environment:
       - CHOKIDAR_USEPOLLING=true
       - TZ=Africa/Lagos
@@ -20,7 +20,7 @@ services:
       - DB_PORT=3306
       - DB_USER=sommysab
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=blog
+      - DB_NAME=${DB_NAME}
       - ENV=production
     logging:
       options:
@@ -31,11 +31,13 @@ services:
   nginx:
     build: './nginx'
     ports:
-      - '8000:80'
+      - '80:80'
     depends_on:
-      - 'api'
+      - 'gowebserver'
     # networks:
     #   - example-net
 # networks:
 #   example-net:
 #     external: true
+
+# git --work-tree=/var/www/x  --git-dir=/var/git_repo/x.git checkout -f
