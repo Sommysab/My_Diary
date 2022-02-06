@@ -27,7 +27,7 @@ services:
       MYSQL_PASSWORD: 1_paWsword
       MYSQL_DATABASE: godocker
     ports:
-      - '3306:3306'
+      - '3307:3306'
     volumes:
       - ./data:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
@@ -47,7 +47,7 @@ services:
       - API_SECRET=ab1234
       - DB_DRIVER=mysql
       - DB_HOST=db
-      - DB_PORT=3306
+      - DB_PORT=3307
       - DB_USER=root
       - DB_PASSWORD=@root
       - DB_NAME=blog
