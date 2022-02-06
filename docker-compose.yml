@@ -27,7 +27,7 @@ services:
       MYSQL_PASSWORD: 1_paWsword
       MYSQL_DATABASE: godocker
     ports:
-      - '3307:3306'
+      - '3306:3306'
     volumes:
       - ./data:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
