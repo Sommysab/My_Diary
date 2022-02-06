@@ -12,13 +12,14 @@ import (
 	"time"
 
 	"backend/api/router"
+	"backend/auto"
 	"backend/config"
 )
 
-// func init() {
-// 	config.Load()
-// 	auto.Load()
-// }
+func init() {
+	config.Load()
+	auto.Load()
+}
 
 type spaHandler struct {
 	staticPath string
