@@ -84,7 +84,7 @@ func main() {
 	// Router
 	r := router.New()
 
-	db, err = gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=postgres sslmode=disable password=mypostgres")
+	db, err = gorm.Open("postgres", "host=postgres port=5432 user=postgres dbname=postgres sslmode=disable password=mypostgres")
 	if err != nil {
 		panic("failed to connect database")
 	}
