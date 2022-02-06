@@ -18,19 +18,19 @@ services:
     build: '.'
     expose:
       - '8010'
-    # environment:
-    #   - CHOKIDAR_USEPOLLING=true
-    #   - TZ=Africa/Lagos
-    #   - API_PORT=8010
-    #   - API_SECRET=ab1234
-    #   # DATABASE CONFIG
-    #   - DB_DRIVER=pgx
-    #   - DB_HOST=localhost
-    #   - DB_PORT=3306
-    #   - DB_USER=sommysab
-    #   - DB_PASSWORD=${DB_PASSWORD}
-    #   - DB_NAME=${DB_NAME}
-    #   - ENV=production
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - TZ=Africa/Lagos
+      - API_PORT=8010
+      - API_SECRET=ab1234
+      # DATABASE CONFIG
+      - DB_DRIVER=pgx
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=sommysab
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - ENV=production
   nginx:
     build: './nginx'
     ports:
