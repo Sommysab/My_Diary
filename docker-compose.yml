@@ -20,6 +20,7 @@ services:
   #     - POSTGRES_PASSWORD=mypostgres
   db:
     image: mysql:5.7.26
+    restart: always
     container_name: godockerDB
     environment:
       MYSQL_USER: docker
@@ -33,6 +34,7 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
   gowebserver:
     build: '.'
+    restart: always
     expose:
       - '8010'
     depends_on:
@@ -53,6 +55,7 @@ services:
       - ENV=production
   nginx:
     build: './nginx'
+    restart: always
     ports:
       - '80:80'
     depends_on:
