@@ -37,18 +37,20 @@ services:
     environment:
       # - CHOKIDAR_USEPOLLING=true
       # - TZ=Africa/Lagos
+
       - API_PORT=8010
       - API_SECRET=ab1234
       - DB_DRIVER=mysql
 
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_NAME=hardwarestore
-      - DB_USER=root
-      - DB_PASS=@root
+      # - DB_HOST=db
+      # - DB_PORT=3306
+      # - DB_NAME=hardwarestore
+      # - DB_USER=root
+      # - DB_PASS=@root
       - ENV=production
   nginx:
     build: './nginx'
+    restart: always
     ports:
       - '80:80'
     depends_on:
