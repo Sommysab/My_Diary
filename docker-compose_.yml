@@ -2,7 +2,7 @@ version: '3.7'
 services:
   api:
     build: .
-    restart: 'no'
+    restart: 'on-failure'
     network_mode: 'host'
     container_name: go-project-backend
     env_file:

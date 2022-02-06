@@ -1,7 +1,8 @@
 version: '2'
 services:
   go-web-app:
-    restart: on-failure
+    # restart: on-failure
+    restart: 'no'
     build:
       dockerfile: Dockerfile
       context: .
