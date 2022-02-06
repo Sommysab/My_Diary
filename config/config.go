@@ -13,7 +13,6 @@ var (
 	DBDRIVER  = ""
 	DBURL     = ""
 	ENV       = ""
-	DBURL2    = ""
 )
 
 // Load the server PORT
