@@ -12,6 +12,16 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - TZ=Africa/Lagos
+      - API_PORT=8000
+      - API_SECRET=ab1234
+      # DATABASE CONFIG
+      - DB_DRIVER=mysql
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=sammy
+      - DB_PASSWORD=some_ABC_pass_123
+      - DB_NAME=blog
+      - ENV=production
     logging:
       options:
         max-size: '10m'
@@ -19,7 +29,6 @@ services:
   nginx:
     build: './nginx'
     ports:
-      - '80:80'
+      - '8000:80'
     depends_on:
       - 'api'
-    #
