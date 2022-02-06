@@ -97,18 +97,39 @@
 // 	log.Fatal(srv.ListenAndServe())
 // }
 
+// package main
+
+// import (
+// 	"fmt"
+// 	"net/http"
+// )
+
+// func helloHandler(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintf(w, "Hello!\\nYour HTTP request method is %s\\n", r.Method)
+// }
+
+// func main() {
+// 	http.HandleFunc("/", helloHandler)
+// 	http.ListenAndServe(":8010", nil)
+// }
+
+//main.go
 package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello!\\nYour HTTP request method is %s\\n", r.Method)
-}
-
 func main() {
-	http.HandleFunc("/", helloHandler)
-	http.ListenAndServe(":8010", nil)
+	router := mux.NewRouter()
+	router.HandleFunc("/", DoHealthCheck).Methods("GET")
+	log.Fatal(http.ListenAndServe(":8010", router))
+}
+func DoHealthCheck(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, i'm a golang microservice")
+	w.WriteHeader(http.StatusAccepted) //RETURN HTTP CODE 202
 }

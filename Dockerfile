@@ -62,7 +62,7 @@ ENV DB_NAME=blog2
 COPY . .
 # RUN go get -u gorm.io/driver/postgres
 # RUN go get -u github.com/jinzhu/gorm
-# RUN go get -u github.com/gorilla/mux
+RUN go get -u github.com/gorilla/mux
 # RUN go get -u github.com/joho/godotenv
 # RUN go get -u golang.org/x/crypto/bcrypt
 # RUN go get -u github.com/dgrijalva/jwt-go
