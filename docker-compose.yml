@@ -1,43 +1,57 @@
+# version: '3.6'
+# services:
+#   gowebserver:
+#     build: .
+#     restart: 'on-failure'
+#     network_mode: 'host'
+#     container_name: go-project-backend
+#     env_file:
+#       - './.env'
+#     ports:
+#       - '8000'
+#     environment:
+#       - CHOKIDAR_USEPOLLING=true
+#       - TZ=Africa/Lagos
+#       - API_PORT=8000
+#       - API_SECRET=ab1234
+#       # DATABASE CONFIG
+#       - DB_DRIVER=mysql
+#       - DB_HOST=localhost
+#       - DB_PORT=3306
+#       - DB_USER=sommysab
+#       - DB_PASSWORD=${DB_PASSWORD}
+#       - DB_NAME=${DB_NAME}
+#       - ENV=production
+#     logging:
+#       options:
+#         max-size: '10m'
+#         max-file: '3'
+#     # networks:
+#     #   - example-net
+#   nginx:
+#     build: './nginx'
+#     ports:
+#       - '80:80'
+#     depends_on:
+#       - 'gowebserver'
+#     # networks:
+#     #   - example-net
+# # networks:
+# #   example-net:
+# #     external: true
+
+# # git --work-tree=/var/www/x  --git-dir=/var/git_repo/x.git checkout -f
+
 version: '3.6'
 services:
   gowebserver:
-    build: .
-    restart: 'on-failure'
-    network_mode: 'host'
-    container_name: go-project-backend
-    env_file:
-      - './.env'
-    ports:
-      - '8000'
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-      - TZ=Africa/Lagos
-      - API_PORT=8000
-      - API_SECRET=ab1234
-      # DATABASE CONFIG
-      - DB_DRIVER=mysql
-      - DB_HOST=localhost
-      - DB_PORT=3306
-      - DB_USER=sommysab
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - ENV=production
-    logging:
-      options:
-        max-size: '10m'
-        max-file: '3'
-    # networks:
-    #   - example-net
+    build: '.'
+    expose:
+      - '8010'
+
   nginx:
     build: './nginx'
     ports:
       - '80:80'
     depends_on:
       - 'gowebserver'
-    # networks:
-    #   - example-net
-# networks:
-#   example-net:
-#     external: true
-
-# git --work-tree=/var/www/x  --git-dir=/var/git_repo/x.git checkout -f
