@@ -69,7 +69,9 @@
 # EXPOSE 8000
 # ENTRYPOINT /go/bin/gowebserver
 
-FROM golang:1.12.7-alpine3.10 AS build
+FROM golang:1.17.6-alpine3.15 AS build
+RUN apk --no-cache add gcc g++ make git
+# FROM golang:1.12.7-alpine3.10 AS build
 WORKDIR /go/src/app
 COPY ./main.go ./main.go
 RUN go build -o ./bin/webserver ./main.go
