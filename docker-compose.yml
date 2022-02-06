@@ -18,6 +18,10 @@ services:
     build: '.'
     expose:
       - '8010'
+    depends_on:
+      - postgres
+    links:
+      - postgres
     environment:
       - CHOKIDAR_USEPOLLING=true
       - TZ=Africa/Lagos
