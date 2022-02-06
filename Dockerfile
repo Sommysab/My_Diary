@@ -46,8 +46,6 @@ FROM golang:1.17.6-alpine3.15 AS build
 RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/backend
 COPY . .
-# RUN go mod init webserver
-# RUN go mod tidy
 RUN go get -u github.com/go-sql-driver/mysql
 RUN go get -u github.com/mattn/go-sqlite3
 RUN go get -u github.com/jinzhu/gorm
