@@ -57,8 +57,8 @@
 FROM golang:1.17.6-alpine3.15 AS build
 RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/app
-ENV DB_PASSWORD=some_ABC_pass_123
-ENV DB_NAME=blog2
+# ENV DB_PASSWORD=some_ABC_pass_123
+# ENV DB_NAME=blog2
 COPY . .
 # RUN go get -u gorm.io/driver/postgres
 RUN go get -u github.com/lib/pq
