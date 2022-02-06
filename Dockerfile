@@ -61,7 +61,7 @@ ENV DB_PASSWORD=some_ABC_pass_123
 ENV DB_NAME=blog2
 COPY . .
 # RUN go get -u gorm.io/driver/postgres
-RUN go get -u github.com/jinzhu/gorm/dialects/postgres
+RUN go get -u github.com/lib/pq
 # RUN go get -u github.com/jinzhu/gorm
 RUN go get -u github.com/gorilla/mux
 
