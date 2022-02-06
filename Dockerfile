@@ -42,8 +42,6 @@
 # ENV DB_PASSWORD=some_ABC_pass_123
 # ENV DB_NAME=blog2
 # COPY . .
-# RUN go get -u github.com/go-sql-driver/mysql
-# RUN go get -u github.com/mattn/go-sqlite3
 # # RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/gowebserver ./main.go
 # RUN go build -o ./bin/webserver ./main.go
 
@@ -60,8 +58,10 @@ WORKDIR /go/src/app
 # ENV DB_PASSWORD=some_ABC_pass_123
 # ENV DB_NAME=blog2
 COPY . .
-# RUN go get -u gorm.io/driver/postgres
-RUN go get -u github.com/lib/pq
+# RUN go get -u github.com/go-sql-driver/mysql
+# RUN go get -u github.com/mattn/go-sqlite3
+# RUN go get -u github.com/lib/pq
+RUN go get -u github.com/go-sql-driver/mysql
 RUN go get -u github.com/jinzhu/gorm
 RUN go get -u github.com/gorilla/mux
 # RUN go get -u github.com/joho/godotenv
