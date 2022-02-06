@@ -3,9 +3,19 @@ services:
   go-web-app:
     # restart: on-failure
     restart: 'no'
+
     build:
       dockerfile: Dockerfile
       context: .
     environment:
       - VIRTUAL_HOST=que-machano.com
       - LETSENCRYPT_HOST=que-machano.com
+      - API_PORT=8000
+      - API_SECRET=ab1234
+      # DATABASE CONFIG
+      - DB_DRIVER=mysql
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=butter
+      - DB_NAME=blog
