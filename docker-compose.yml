@@ -14,6 +14,10 @@
 
 version: '3.7'
 services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - POSTGRES_PASSWORD=mypostgres
   gowebserver:
     build: '.'
     expose:
@@ -40,7 +44,3 @@ services:
       - '80:80'
     depends_on:
       - 'gowebserver'
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - POSTGRES_PASSWORD=mypostgres
