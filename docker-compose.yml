@@ -3,7 +3,7 @@ services:
   api:
     build: .
     restart: 'on-failure'
-    network_mode: 'host'
+    # network_mode: 'host'
     container_name: go-project-backend
     env_file:
       - './.env'
@@ -26,9 +26,17 @@ services:
       options:
         max-size: '10m'
         max-file: '3'
+    networks:
+      - example
   nginx:
     build: './nginx'
     ports:
       - '8000:80'
     depends_on:
       - 'api'
+    networks:
+      - example
+
+networks:
+  example:
+    external: true
