@@ -4,7 +4,7 @@ import (
 	"backend/config"
 
 	"github.com/jinzhu/gorm"
-	_ "gorm.io/driver/postgres"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 // Connect to the DATABASE
