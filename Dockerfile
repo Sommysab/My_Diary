@@ -62,14 +62,13 @@ ENV DB_NAME=blog2
 COPY . .
 # RUN go get -u gorm.io/driver/postgres
 RUN go get -u github.com/lib/pq
-# RUN go get -u github.com/jinzhu/gorm
+RUN go get -u github.com/jinzhu/gorm
 RUN go get -u github.com/gorilla/mux
-
 # RUN go get -u github.com/joho/godotenv
-# RUN go get -u golang.org/x/crypto/bcrypt
-# RUN go get -u github.com/dgrijalva/jwt-go
-# RUN go get -u github.com/badoux/checkmail
-# RUN go get -u github.com/dgrijalva/jwt-go/request
+RUN go get -u golang.org/x/crypto/bcrypt
+RUN go get -u github.com/dgrijalva/jwt-go
+RUN go get -u github.com/badoux/checkmail
+RUN go get -u github.com/dgrijalva/jwt-go/request
 RUN go build -o ./bin/webserver ./main.go
 
 FROM alpine:3.10
