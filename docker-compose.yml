@@ -19,16 +19,13 @@ services:
   #   environment:
   #     - POSTGRES_PASSWORD=mypostgres
   db:
-    container_name: diary_db
-    image: 'mysql:5.7'
+    image: mysql:5.7.26
+    container_name: godockerDB
     environment:
-      - MYSQL_DATABASE=blog
-      - MYSQL_ROOT_PASSWORD=@root
-      - MYSQL_USER=mysql
-      - MYSQL_PASSWORD=@root
-      - DATABASE_HOST=db
-      - LC_ALL=C.UTF-8
-      - LANG=C.UTF-8
+      MYSQL_USER: docker
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: godocker
     ports:
       - '3307:3306'
     volumes:
