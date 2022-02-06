@@ -5,6 +5,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
+    network_mode: 'host'
+    container_name: go-project-backend
     env_file:
       - '.env'
     environment:
@@ -16,7 +18,7 @@ services:
       - DB_DRIVER=mysql
       - DB_HOST=localhost
       - DB_PORT=3306
-      - DB_USER=sommysab
-      - DB_PASSWORD=N?c$=u_A5aGz&n?E7@3c7
-      - DB_NAME=blog2
+      - DB_USER=sammy
+      - DB_PASSWORD=some_ABC_pass_123
+      - DB_NAME=blog
       - ENV=production
