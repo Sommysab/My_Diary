@@ -29,6 +29,7 @@ services:
       - DB_NAME=godocker
       - DB_USER=docker
       - DB_PASSWORD=passwor1d
+      - DB_HOST=godockerDB
       - ENV=production
   nginx:
     build: './nginx'
