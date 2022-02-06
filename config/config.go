@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"os"
 	"strconv"
 	// "github.com/joho/godotenv"
@@ -38,9 +37,9 @@ func Load() {
 	// 	os.Getenv("DB_NAME"),
 	// )
 
-	DBURL = fmt.Sprintf("host=localhost user=gorm password=%s dbname=gorm port=9920 sslmode=disable TimeZone=Lagos/Africa",
-		os.Getenv("DB_PASSWORD"),
-	)
+	// db, err = gorm.Open( "postgres", "host=db port=5432 user=postgres dbname=postgres sslmode=disable password=postgres")
+
+	DBURL = "host=db port=5432 user=postgres dbname=postgres sslmode=disable password=postgres"
 
 	SECRETKEY = []byte(os.Getenv("API_SECRET"))
 

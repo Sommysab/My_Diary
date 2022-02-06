@@ -12,12 +12,13 @@ import (
 	"time"
 
 	"backend/api/router"
+	"backend/auto"
 	"backend/config"
 )
 
 func init() {
 	config.Load()
-	// auto.Load()
+	auto.Load()
 }
 
 type spaHandler struct {

@@ -24,7 +24,7 @@ services:
       - API_PORT=8010
       - API_SECRET=ab1234
       # DATABASE CONFIG
-      - DB_DRIVER=pgx
+      - DB_DRIVER=postgres
       - DB_HOST=localhost
       - DB_PORT=3306
       - DB_USER=sommysab
