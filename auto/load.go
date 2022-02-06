@@ -6,8 +6,6 @@ import (
 	// "backend/api/utils/console"
 
 	"backend/api/database"
-	"backend/api/models"
-	// "backend/api/models"
 )
 
 // Load autogenerates the tables and records
@@ -18,15 +16,15 @@ func Load() {
 	}
 	defer db.Close()
 
-	err = db.Debug().DropTableIfExists(&models.Post{}, &models.User{}).Error
-	if err != nil {
-		log.Fatal(err)
-	}
+	// err = db.Debug().DropTableIfExists(&models.Post{}, &models.User{}).Error
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	err = db.Debug().AutoMigrate(&models.User{}, &models.Post{}).Error
-	if err != nil {
-		log.Fatal(err)
-	}
+	// err = db.Debug().AutoMigrate(&models.User{}, &models.Post{}).Error
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	// err = db.Debug().Model(&models.Post{}).AddForeignKey("author_id", "users(id)", "cascade", "cascade").Error
 	// if err != nil {
