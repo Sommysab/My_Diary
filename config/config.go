@@ -2,9 +2,11 @@ package config
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
-	// "github.com/joho/godotenv"
+
+	"github.com/joho/godotenv"
 )
 
 // PORT server port
@@ -19,10 +21,10 @@ var (
 // Load the server PORT
 func Load() {
 	var err error
-	// err = godotenv.Load()
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	err = godotenv.Load()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	PORT, err = strconv.Atoi(os.Getenv("API_PORT"))
 	if err != nil {
