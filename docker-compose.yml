@@ -19,6 +19,7 @@ services:
   #   environment:
   #     - POSTGRES_PASSWORD=mypostgres
   db:
+    container_name: diary_db
     image: 'mysql:5.7'
     environment:
       - MYSQL_DATABASE=blog
