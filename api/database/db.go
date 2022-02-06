@@ -7,7 +7,7 @@ import (
 
 // Connect to the DATABASE
 func Connect() (*gorm.DB, error) {
-	db, err := gorm.Open("mysql", "docker:password@tcp(godockerDB)/godocker") // gorm.Open(config.DBDRIVER, config.DBURL)
+	db, err := gorm.Open("mysql", "docker:1_paWsword@tcp(godockerDB)/godocker") // gorm.Open(config.DBDRIVER, config.DBURL)
 	if err != nil {
 		return nil, err
 	}
