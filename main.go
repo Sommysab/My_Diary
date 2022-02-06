@@ -4,6 +4,7 @@ import (
 	f "fmt"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"path/filepath"
@@ -86,7 +87,7 @@ func main() {
 
 	srv := &http.Server{
 		Handler: r,
-		Addr:    ":80",
+		Addr:    ":" + strconv.FormatUint(uint64(config.PORT), 10),
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
