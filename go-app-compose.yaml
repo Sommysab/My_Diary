@@ -13,9 +13,10 @@ services:
       - API_PORT=8000
       - API_SECRET=ab1234
       # DATABASE CONFIG
-      # - DB_DRIVER=mysql
-      # - DB_HOST=localhost
-      # - DB_PORT=3306
-      # - DB_USER=root
-      # - DB_PASSWORD=butter
-      # - DB_NAME=blog
+      - DB_DRIVER=mysql
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=sommysab
+      - DB_PASSWORD=N?c$=u_A5aGz&n?E7@3c7
+      - DB_NAME=blog2
+      - ENV=production
