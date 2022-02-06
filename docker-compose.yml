@@ -55,7 +55,6 @@ services:
       - ENV=production
   nginx:
     build: './nginx'
-    restart: always
     ports:
       - '80:80'
     depends_on:
