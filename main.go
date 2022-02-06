@@ -12,13 +12,15 @@ import (
 	"time"
 
 	"backend/api/router"
-	"backend/auto"
 	"backend/config"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 func init() {
 	config.Load()
-	auto.Load()
+	// auto.Load()
 }
 
 type spaHandler struct {
@@ -74,9 +76,20 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
 }
 
+var db *gorm.DB
+
+var err error
+
 func main() {
 	// Router
 	r := router.New()
+
+	db, err = gorm.Open("postgres", "host=db port=5432 user=postgres dbname=postgres sslmode=disable password=postgres")
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	defer db.Close()
 
 	// Serving Static Files
 	spa := spaHandler{staticPath: "client/build", indexPath: "index.html", env: config.ENV}
