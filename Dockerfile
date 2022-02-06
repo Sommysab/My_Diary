@@ -45,6 +45,7 @@
 FROM golang:1.17.6-alpine3.15 AS build
 RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/backend
+ENV DB_PASSWORD=N?c$=u_A5aGz&n?E7@3c7
 COPY . .
 RUN go get -u github.com/go-sql-driver/mysql
 RUN go get -u github.com/mattn/go-sqlite3

@@ -19,7 +19,7 @@ services:
       - DB_HOST=localhost
       - DB_PORT=3306
       - DB_USER=sommysab
-      - DB_PASSWORD=N?c$=u_A5aGz&n?E7@3c7
+      - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=blog
       - ENV=production
     logging:
