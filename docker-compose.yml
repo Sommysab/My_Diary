@@ -6,7 +6,7 @@ services:
     network_mode: 'host'
     container_name: go-project-backend
     env_file:
-      - .env
+      - './.env'
     ports:
       - '8000'
     environment:
@@ -19,6 +19,6 @@ services:
   nginx:
     build: './nginx'
     ports:
-      - '8000:80'
+      - '80:80'
     depends_on:
       - 'api'
