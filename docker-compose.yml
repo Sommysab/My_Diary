@@ -3,7 +3,7 @@ services:
   api:
     build: .
     restart: on-failure
-    network_mode: 'host'
+    # network_mode: 'host'
     container_name: go-project-backend
     env_file:
       - .env
