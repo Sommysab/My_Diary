@@ -14,8 +14,6 @@ import (
 	"backend/api/router"
 	"backend/auto"
 	"backend/config"
-
-	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 func init() {
@@ -83,13 +81,6 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func main() {
 	// Router
 	r := router.New()
-
-	// db, err = gorm.Open("postgres", "host=postgres port=5432 user=postgres dbname=postgres sslmode=disable password=mypostgres")
-	// if err != nil {
-	// 	panic("failed to connect database")
-	// }
-
-	// defer db.Close()
 
 	// Serving Static Files
 	spa := spaHandler{staticPath: "client/build", indexPath: "index.html", env: config.ENV}
