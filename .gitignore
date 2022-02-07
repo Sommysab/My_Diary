@@ -6,8 +6,7 @@ go.mod
 go.sum 
 
 # Custom Files
-main.txt
-api/server.txt
+main2.txt
 
 # SQLITE DB
 sqlite
