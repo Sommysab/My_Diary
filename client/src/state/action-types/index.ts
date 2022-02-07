@@ -1,0 +1,16 @@
+export enum ActionType {
+  USER_LOADED = 'user_loaded',
+  USER_LOADING = 'user_loading',
+  AUTH_ERROR = 'auth_error',
+  LOGIN_SUCCESS = 'login_success',
+  LOGIN_FAIL = 'login_fail',
+  LOGOUT_SUCCESS = 'logout_success',
+  REGISTER_SUCCESS = 'register_success',
+  REGISTER_FAIL = 'register_fail', 
+  CLEAR_ERROR = 'clear_error',
+  GET_ITEMS = 'get_items', 
+  ADD_ITEM = 'add_items', 
+  DELETE_ITEM = 'delete_items', 
+  ITEMS_LOADING = 'items_loading',
+  ITEM_ERROR = 'item_error',
+}

@@ -31,12 +31,12 @@ services:
       - DB_PASSWORD=passwor1d
       - DB_HOST=godockerDB
       - ENV=production
-  client:
-    # stdin_open: true
-    build: './client'
-    # volumes:
-    #   - /app/node_modules
-    #   - ./client:/go/src/app
+  # client:
+  # stdin_open: true
+  # build: './client'
+  # volumes:
+  #   - /app/node_modules
+  #   - ./client:/go/src/app
   nginx:
     build: './nginx'
     restart: always
