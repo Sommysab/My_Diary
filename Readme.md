@@ -27,3 +27,7 @@
 ## Api endpoint for frontend:
 
 - localhost:3000
+
+## Live Sample
+
+- http://95.216.208.113
