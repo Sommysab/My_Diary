@@ -33,9 +33,7 @@ services:
       - ENV=production
   client:
     stdin_open: true
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./client
+    build: ''./client'
     volumes:
       - /app/node_modules
       - ./client:/app
