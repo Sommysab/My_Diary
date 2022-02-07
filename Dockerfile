@@ -48,12 +48,12 @@ RUN go get -u golang.org/x/crypto/bcrypt
 RUN go get -u github.com/dgrijalva/jwt-go
 RUN go get -u github.com/badoux/checkmail
 RUN go get -u github.com/dgrijalva/jwt-go/request
-# RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/gowebserver ./main.go
-RUN go build -o ./bin/webserver ./main.go
+RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/gowebserver ./main.go
+# RUN go build -o ./bin/webserver ./main.go
 
 FROM alpine:3.10
-# RUN apk --no-cache add ca-certificates
-# WORKDIR /usr/bin
+RUN apk --no-cache add ca-certificates
+WORKDIR /usr/bin
 COPY --from=build /go/src/app/bin /go/bin
 EXPOSE 8010
 ENTRYPOINT /go/bin/webserver
