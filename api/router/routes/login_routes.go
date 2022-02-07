@@ -8,7 +8,7 @@ import (
 
 var loginRoutes = []Route{
 	Route{
-		URI:          "/login",
+		URI:          "/api/login",
 		Method:       http.MethodPost,
 		Handler:      controllers.Login,
 		AuthRequired: false,

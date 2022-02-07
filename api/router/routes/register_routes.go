@@ -8,7 +8,7 @@ import (
 
 var registerRoutes = []Route{
 	Route{
-		URI:          "/register",
+		URI:          "/api/register",
 		Method:       http.MethodPost,
 		Handler:      controllers.Register,
 		AuthRequired: false,
