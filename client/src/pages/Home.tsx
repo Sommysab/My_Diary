@@ -34,7 +34,6 @@ const Home: React.FC = () => {
 
     return (
         <>
-            {console.log({items})}
             <div className="row" style={{paddingTop:'10px'}} >
                 <div className="col">
                     <hr />
