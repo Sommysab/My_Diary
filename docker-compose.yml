@@ -32,7 +32,7 @@ services:
       - DB_HOST=godockerDB
       - ENV=production
   client:
-  stdin_open: true
+  # stdin_open: true
   build: './client'
   volumes:
     - /app/node_modules
