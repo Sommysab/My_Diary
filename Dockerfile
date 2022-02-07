@@ -39,7 +39,7 @@ WORKDIR /go/src/backend
 ENV GOPATH=/go
 # ENV GO111MODULE=on
 COPY . .
-RUN go mod init webserver
+RUN go mod init backend
 RUN go mod tidy
 # RUN go get -u github.com/mattn/go-sqlite3
 # RUN go get -u github.com/lib/pq
