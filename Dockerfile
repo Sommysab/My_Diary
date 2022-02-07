@@ -36,6 +36,7 @@
 FROM golang:1.17.6-alpine3.15 AS build
 RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/backend
+ENV GOPATH=/go
 # ENV GO111MODULE=on
 COPY . .
 RUN go mod init webserver
