@@ -33,6 +33,7 @@ func modifyPath(path string, h spaHandler) string {
 	if h.env == "development" {
 		path = strings.Replace(path, `C:\`, "/", 1)
 	}
+	f.Println(path)
 	return path
 }
 
@@ -79,6 +80,7 @@ func main() {
 	r := router.New()
 
 	// Serving Static Files
+	f.Println(config.ENV)
 	spa := spaHandler{staticPath: "client/build", indexPath: "index.html", env: config.ENV}
 	r.PathPrefix("/").Handler(spa)
 
