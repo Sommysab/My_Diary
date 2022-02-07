@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	f "fmt"
+	"log"
 	"net/http"
 	"strings"
 
@@ -9,10 +11,9 @@ import (
 
 	"os"
 
+	"backend/api/router"
 	"backend/auto"
 	"backend/config"
-
-	"github.com/gorilla/mux"
 )
 
 func init() {
@@ -80,30 +81,27 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// Router
-	// r := router.New()
-	r := mux.NewRouter()
-	r.HandleFunc("/api", helloHandler)
-	// r.HandleFunc("/load/{dataId}", Load)
-	// r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
+	r := router.New()
+	// r.HandleFunc("/api", helloHandler)
+	// // http.ListenAndServe(":8100", r)
+	// fmt.Println(http.Dir("/client/build/"))
+	// r.PathPrefix("/").Handler(http.FileServer(http.Dir("/client/build/")))
 	// http.ListenAndServe(":8100", r)
-	fmt.Println(http.Dir("/client/build/"))
-	r.PathPrefix("/").Handler(http.FileServer(http.Dir("/client/build/")))
-	http.ListenAndServe(":8100", r)
 
-	// // Serving Static Files
-	// spa := spaHandler{staticPath: "client/build", indexPath: "index.html", env: config.ENV}
-	// r.PathPrefix("/").Handler(spa)
+	// Serving Static Files
+	spa := spaHandler{staticPath: "client/build", indexPath: "index.html", env: config.ENV}
+	r.PathPrefix("/").Handler(spa)
 
-	// srv := &http.Server{
-	// 	Handler: r,
-	// 	Addr:    ":8010", // + strconv.FormatUint(uint64(config.PORT), 10),
-	// 	// Good practice: enforce timeouts for servers you create!
-	// 	WriteTimeout: 15 * time.Second,
-	// 	ReadTimeout:  15 * time.Second,
-	// }
+	srv := &http.Server{
+		Handler: r,
+		Addr:    ":8010", // + strconv.FormatUint(uint64(config.PORT), 10),
+		// Good practice: enforce timeouts for servers you create!
+		// WriteTimeout: 15 * time.Second,
+		// ReadTimeout:  15 * time.Second,
+	}
 
-	// f.Printf("\n\tListening [::]:%d", config.PORT)
-	// log.Fatal(srv.ListenAndServe())
+	f.Printf("\n\tListening [::]:%d", config.PORT)
+	log.Fatal(srv.ListenAndServe())
 }
 
 // package main
