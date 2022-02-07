@@ -31,14 +31,14 @@ services:
       - DB_PASSWORD=passwor1d
       - DB_HOST=godockerDB
       - ENV=production
-  # client:
-  #   stdin_open: true
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./client
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./client:/client
+  client:
+    stdin_open: true
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/client
   nginx:
     build: './nginx'
     restart: always
@@ -46,4 +46,4 @@ services:
       - '80:80'
     depends_on:
       - gowebserver
-      # - client
+      - client
