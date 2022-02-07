@@ -5,7 +5,6 @@ import (
 	f "fmt"
 	"log"
 	"net/http"
-	"strings"
 
 	"path/filepath"
 
@@ -28,13 +27,13 @@ type spaHandler struct {
 }
 
 // Windows OS modification
-func modifyPath(path string, h spaHandler) string {
-	// path
-	if h.env == "development" {
-		path = strings.Replace(path, `C:\`, "/", 1)
-	}
-	return path
-}
+// func modifyPath(path string, h spaHandler) string {
+// 	// path
+// 	if h.env == "development" {
+// 		path = strings.Replace(path, `C:\`, "/", 1)
+// 	}
+// 	return path
+// }
 
 // ServeHTTP inspects the URL path to locate a file within the static dir
 // on the SPA handler. If a file is found, it will be served. If not, the
@@ -45,7 +44,7 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// get the absolute path to prevent directory traversal
 	path, err := filepath.Abs(r.URL.Path)
 
-	path = modifyPath(path, h) // strings.Replace(path, `C:\`, "/", 1)
+	// path = modifyPath(path, h) // strings.Replace(path, `C:\`, "/", 1)
 
 	if err != nil {
 		// if we failed to get the absolute path respond with a 400 bad request
