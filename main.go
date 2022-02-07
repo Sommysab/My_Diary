@@ -86,7 +86,7 @@ func main() {
 	// r.HandleFunc("/load/{dataId}", Load)
 	// r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
 	// http.ListenAndServe(":8100", r)
-	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./client/build")))
+	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./client/build/")))
 	http.ListenAndServe(":8100", r)
 
 	// // Serving Static Files
