@@ -38,6 +38,7 @@ RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/app
 # ENV GO111MODULE=on
 COPY . .
+COPY ./client /usr/bin/client
 # RUN go get -u github.com/mattn/go-sqlite3
 # RUN go get -u github.com/lib/pq
 RUN go get github.com/go-sql-driver/mysql
