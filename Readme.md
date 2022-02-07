@@ -14,6 +14,10 @@
     cd backend
 
     sudo docker-compose up -d
+
+    # Register anew OR Sign in with a pre-populated user info below to interact with other parts of the app
+    # Email: sommysab@gmail.com
+    # Password: 1
 ```
 
 ## Api endpoint for backend:
