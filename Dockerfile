@@ -36,7 +36,7 @@
 FROM golang:1.17.6-alpine3.15 AS build
 RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/app
-ENV GO111MODULE=on
+# ENV GO111MODULE=on
 COPY . .
 # RUN go get -u github.com/mattn/go-sqlite3
 # RUN go get -u github.com/lib/pq
