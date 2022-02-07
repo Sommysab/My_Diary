@@ -12,7 +12,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 var usersRoutes = []Route{
 	Route{
-		URI:          "/api",
+		URI:          "/",
 		Method:       http.MethodGet,
 		Handler:      helloHandler,
 		AuthRequired: false,
