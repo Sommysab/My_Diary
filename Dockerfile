@@ -40,15 +40,15 @@ WORKDIR /go/src/app
 COPY . .
 # RUN go get -u github.com/mattn/go-sqlite3
 # RUN go get -u github.com/lib/pq
-RUN go get -u github.com/go-sql-driver/mysql
-RUN go get -u github.com/jinzhu/gorm
-RUN go get -u github.com/gorilla/mux
+RUN go get github.com/go-sql-driver/mysql
+RUN go get github.com/jinzhu/gorm
+RUN go get github.com/gorilla/mux
 # RUN go get -u github.com/joho/godotenv
-RUN go get -u golang.org/x/crypto/bcrypt
-RUN go get -u github.com/dgrijalva/jwt-go
-RUN go get -u github.com/badoux/checkmail
-RUN go get -u github.com/dgrijalva/jwt-go/request
-RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/gowebserver ./main.go
+RUN go get golang.org/x/crypto/bcrypt
+RUN go get github.com/dgrijalva/jwt-go
+RUN go get github.com/badoux/checkmail
+RUN go get github.com/dgrijalva/jwt-go/request
+RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/webserver ./main.go
 # RUN go build -o ./bin/webserver ./main.go
 
 FROM alpine:3.10
