@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -8,9 +9,10 @@ import (
 
 	"os"
 
-	"backend/api/router"
 	"backend/auto"
 	"backend/config"
+
+	"github.com/gorilla/mux"
 )
 
 func init() {
@@ -71,9 +73,19 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
 }
 
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello!\\nYour HTTP request method is %s\\n", r.Method)
+	w.WriteHeader(http.StatusAccepted)
+}
+
 func main() {
 	// Router
-	r := router.New()
+	// r := router.New()
+	r := mux.NewRouter()
+	r.HandleFunc("/api", helloHandler)
+	// r.HandleFunc("/load/{dataId}", Load)
+	// r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
+	// http.ListenAndServe(":8100", r)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./client/build")))
 	http.ListenAndServe(":8100", r)
 
