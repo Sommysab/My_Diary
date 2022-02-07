@@ -38,7 +38,6 @@ RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/app
 # ENV GO111MODULE=on
 COPY . .
-COPY ./client /usr/bin/client
 # RUN go get -u github.com/mattn/go-sqlite3
 # RUN go get -u github.com/lib/pq
 RUN go get github.com/go-sql-driver/mysql
@@ -53,8 +52,8 @@ RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/webserver ./main.go
 # RUN go build -o ./bin/webserver ./main.go
 
 FROM alpine:3.10
-RUN apk --no-cache add ca-certificates
-WORKDIR /usr/bin
+# RUN apk --no-cache add ca-certificates
+# WORKDIR /usr/bin
 COPY --from=build /go/src/app/bin /go/bin
 EXPOSE 8010
 ENTRYPOINT /go/bin/webserver
