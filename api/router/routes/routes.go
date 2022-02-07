@@ -19,9 +19,9 @@ type Route struct {
 // Load the routes
 func Load() []Route {
 	routes := usersRoutes
-	// routes = append(routes, postsRoutes...)
-	// routes = append(routes, loginRoutes...)
-	// routes = append(routes, registerRoutes...)
+	routes = append(routes, postsRoutes...)
+	routes = append(routes, loginRoutes...)
+	routes = append(routes, registerRoutes...)
 	return routes
 }
 
