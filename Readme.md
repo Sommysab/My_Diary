@@ -1,4 +1,4 @@
-# Golang API REST with Frontend Typscript, MySQL & Docker
+# Golang API REST with Frontend Typscript, MySQL, Docker && Nginx
 
 - Install
 
