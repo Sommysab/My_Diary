@@ -38,16 +38,18 @@ RUN apk --no-cache add gcc g++ make git
 WORKDIR /go/src/app
 # ENV GO111MODULE=on
 COPY . .
+RUN go mod init webserver
+RUN go mod tidy
 # RUN go get -u github.com/mattn/go-sqlite3
 # RUN go get -u github.com/lib/pq
-RUN go get github.com/go-sql-driver/mysql
-RUN go get github.com/jinzhu/gorm
-RUN go get github.com/gorilla/mux
-# RUN go get -u github.com/joho/godotenv
-RUN go get golang.org/x/crypto/bcrypt
-RUN go get github.com/dgrijalva/jwt-go
-RUN go get github.com/badoux/checkmail
-RUN go get github.com/dgrijalva/jwt-go/request
+# RUN go get github.com/go-sql-driver/mysql
+# RUN go get github.com/jinzhu/gorm
+# RUN go get github.com/gorilla/mux
+# # RUN go get -u github.com/joho/godotenv
+# RUN go get golang.org/x/crypto/bcrypt
+# RUN go get github.com/dgrijalva/jwt-go
+# RUN go get github.com/badoux/checkmail
+# RUN go get github.com/dgrijalva/jwt-go/request
 RUN GOOS=linux go build -ldflags="-s -w" -o ./bin/webserver ./main.go
 # RUN go build -o ./bin/webserver ./main.go
 

@@ -1,6 +1,10 @@
 # ENV file
 .env
 
+# Mod
+go.mod 
+go.sum 
+
 # Custom Files
 main.txt
 api/server.txt
