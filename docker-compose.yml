@@ -33,7 +33,7 @@ services:
       - ENV=production
   client:
     stdin_open: true
-    build: ''./client'
+    build: './client'
     volumes:
       - /app/node_modules
       - ./client:/app
