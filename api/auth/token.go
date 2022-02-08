@@ -41,13 +41,13 @@ func ExtractToken(w http.ResponseWriter, r *http.Request) *jwt.Token {
 		},
 	)
 
-	// Using Sessions Or Cookies
+	// Using Cookie session
 	//
 	// token, err := jwt.ParseWithClaims(
 	// 	cookie,
 	// 	&jwt.StandardClaims{},
-	// 	func(token *jwt.Token) (interface{}, error) {
-	// 		return []byte(SecretKey), nil
+	// 	func(t *jwt.Token) (interface{}, error) {
+	// 		return config.SECRETKEY, nil
 	// 	})
 
 	if err != nil {
